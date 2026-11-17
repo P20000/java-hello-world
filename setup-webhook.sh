@@ -44,3 +44,4 @@ gh api repos/P20000/java-hello-world/hooks \
 
 echo ""
 echo "Webhook registered successfully on P20000/java-hello-world!"
+
