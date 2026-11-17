@@ -9,6 +9,3 @@ public class App {
         System.out.println(getGreeting());
     }
 }
-
-clear
-// Trigger test commit
