@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    // Triggers build automatically when Jenkins receives a GitHub push webhook.
-    // Ensure the "GitHub Integration: GitHub plugin" is installed in Jenkins
-    // and the webhook URL in GitHub is set to: http://<YOUR_JENKINS_SERVER>/github-webhook/
     triggers {
         githubPush()
     }
@@ -13,13 +10,6 @@ pipeline {
         disableConcurrentBuilds()
         timestamps()
     }
-
-    /* Uncomment and configure tools if your Jenkins agent uses tool configurations
-    tools {
-        maven 'Maven 3'
-        jdk 'Java 17'
-    }
-    */
 
     stages {
         stage('Checkout') {
@@ -60,9 +50,7 @@ pipeline {
 
     post {
         always {
-            // Collect JUnit test reports
             junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
-            // Archive the generated JAR
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         }
         success {
@@ -73,4 +61,3 @@ pipeline {
         }
     }
 }
-

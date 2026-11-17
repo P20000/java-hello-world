@@ -9,5 +9,9 @@ class AppTest {
     void testGetGreeting() {
         assertEquals("Hello, World!", App.getGreeting());
     }
-}
 
+    @Test
+    void testAdd() {
+        assertEquals(5, App.add(2, 3));
+    }
+}
